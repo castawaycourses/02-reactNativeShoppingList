@@ -8,9 +8,16 @@ const ProductInput = ({onAddProduct}) => {
     const [productName, setProductName] = useState('');
 
 
-    onChangeProduct = (value) => {
+    const onChangeProduct = (value) => {
         console.log(value);
         setProductName(value);
+    }
+
+    const addProductHandler = () => {
+        if (productName !== '') {
+            onAddProduct(productName);
+            setProductName('');
+        }
     }
 
     return (
@@ -23,7 +30,7 @@ const ProductInput = ({onAddProduct}) => {
                 onChangeText={onChangeProduct}
                 value={productName}
             />
-            <Button title="Add" onPress={() => onAddProduct(productName)}/>
+            <Button title="Add" onPress={addProductHandler}/>
         </View>
     )
 }
