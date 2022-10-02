@@ -1,30 +1,26 @@
 import { useState } from 'react';
 
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+
+import ProductInput from './components/ProductInput';
 
 export default function App() {
+  
+  const [productList, setProductList] = useState([]);
 
-  const [productName, setProductName] = useState('');
+  const [newProduct, setNewProduct] = useState('')
 
-  onChangeProduct = (value) => {
-    console.log(value);
-    setProductName(value);
+  const newProductHandler = (newProductName) => {
+    setNewProduct(newProductName);
   }
+
 
   return (
     <View style={styles.container}>
-      <View style={styles.productInput}>
-        <TextInput 
-          style={styles.productName}
-          placeholder={"Introduzca un producto"}
-          keyboardType={"default"}
-          onChangeText={onChangeProduct}
-          />
-        <Button title="Add"/>
-      </View>
-
+      {console.log('rendering app')}
+      <ProductInput onAddProduct={newProductHandler} />
       <View>
-        <Text style={styles.productItem}>{productName}</Text>
+        <Text style={styles.productItem}>{newProduct}</Text>
       </View>
 
     </View>
@@ -38,26 +34,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'flex-start',
-  },
-
-  productInput: {
-    flexDirection: 'row',     
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    height: 80,
-    width: '80%',
-    padding: 10,
-    borderRadius: 5,
-    backgroundColor: '#eef4ed',
-  },
-  productName: {
-    flex: 4,
-    height: 40,
-    borderBottomWidth: 1,
-    marginHorizontal: 10
-  },
-  addButton: {
-    flex: 1
   },
   productItem: {
     fontSize: 20,
