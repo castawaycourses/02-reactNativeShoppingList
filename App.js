@@ -8,10 +8,8 @@ export default function App() {
   
   const [productList, setProductList] = useState([]);
 
-  const [newProduct, setNewProduct] = useState('')
-
   const newProductHandler = (newProductName) => {
-    setNewProduct(newProductName);
+    setProductList(() => ([...productList, newProductName]));
   }
 
 
@@ -20,7 +18,14 @@ export default function App() {
       {console.log('rendering app')}
       <ProductInput onAddProduct={newProductHandler} />
       <View>
-        <Text style={styles.productItem}>{newProduct}</Text>
+        {
+          productList.map((product) => (
+            <Text key={product} style={styles.productItem}>
+              {product}
+            </Text>
+          ))
+        }
+        
       </View>
 
     </View>
