@@ -19,6 +19,7 @@ const ProductList = ({ products }) => {
 const styles = StyleSheet.create({
     productList: {
         flex: 1,
+        width: '80%',
         marginTop: 16
     },
     productAlert: {
