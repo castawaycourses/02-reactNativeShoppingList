@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 
+import ProductItem from './ProductItem';
+
 const ProductList = ({ products }) => {
     return (
         <View style={styles.productList}>
             {
                 products && products.length > 0 ?
                     products.map((product, idx) => (
-                        <Text key={product + idx} style={styles.productItem}>
-                            {product}
-                        </Text>
+                        <ProductItem key={product + idx} productName={product} />
                     ))
                     : <Text style={styles.productAlert}>There aren't products defined yet</Text>
             }
@@ -18,10 +18,8 @@ const ProductList = ({ products }) => {
 
 const styles = StyleSheet.create({
     productList: {
-        flex: 1
-    },
-    productItem: {
-        fontSize: 20,
+        flex: 1,
+        marginTop: 16
     },
     productAlert: {
         color: 'grey',
