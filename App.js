@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import ProductInput from './components/ProductInput';
+import ProductList from './components/ProductList';
 
 export default function App() {
   
@@ -17,17 +18,7 @@ export default function App() {
     <View style={styles.container}>
       {console.log('rendering app')}
       <ProductInput onAddProduct={newProductHandler} />
-      <View>
-        {
-          productList.map((product) => (
-            <Text key={product} style={styles.productItem}>
-              {product}
-            </Text>
-          ))
-        }
-        
-      </View>
-
+      <ProductList products={productList}/>
     </View>
   );
 }
@@ -39,8 +30,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'flex-start',
-  },
-  productItem: {
-    fontSize: 20,
   }
 });
