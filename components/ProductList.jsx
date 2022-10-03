@@ -1,17 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import ProductItem from './ProductItem';
 
 const ProductList = ({ products }) => {
     return (
         <View style={styles.productList}>
-            {
-                products && products.length > 0 ?
-                    products.map((product, idx) => (
-                        <ProductItem key={product + idx} productName={product} />
-                    ))
-                    : <Text style={styles.productAlert}>There aren't products defined yet</Text>
-            }
+            <ScrollView>
+                {
+                    products && products.length > 0 ?
+                        products.map((product, idx) => (
+                            <ProductItem key={product + idx} productName={product} />
+                        ))
+                        : <Text style={styles.productAlert}>There aren't products defined yet</Text>
+                }
+            </ScrollView>
         </View>
     );
 }
